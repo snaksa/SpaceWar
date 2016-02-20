@@ -1,0 +1,56 @@
+﻿<!DOCTYPE html>
+<html>
+<head>
+    <title>Космически войни</title>
+    <link rel="stylesheet" type="text/css" href="styles.css">
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.12.0/jquery.min.js"></script>
+    <script src="js/sprites.js"></script>
+    <script src="js/explosion.js"></script>
+    <script src="js/bullet.js"></script>
+    <script src="js/player.js"></script>
+    <script src="js/enemy.js"></script>
+    <script src="js/input.js"></script>
+    <script src="js/generator.js"></script>
+    <script src="js/collisions.js"></script>
+    <script src="js/update.js"></script>
+    <script src="js/render.js"></script>
+    <script src="js/game.js"></script>
+    <script src="js/mainJs.js"></script>
+
+    <script>
+        window.onload = StartGame;
+    </script>
+</head>
+
+<body>
+    <div id="mainDiv" class="mainDiv" style="margin: 50px auto;">
+    <canvas id="gameCanvas" width="800px" height="500px"></canvas>
+
+        <div class="mainDiv" id="splashScreen">
+            <div id="logo"><img src="images/logo.png" /></div>
+            <div id="startButtons">
+                <div class="startButton" onclick="StartGame()">Начало</div>
+                <!--<div class="startButton" onclick="ShowDiv('startGame')">Начало</div>-->
+            </div>
+        </div>
+
+        <div class="dialog" id="startGame">
+            <div class="dialogTitle">Заглавие</div>
+            <div class="dialogContent">adasdasdasdsdas asdas ad as asd as ad addsd as ad addsd as ad addsd as ad addsd as ad addsd as ad addsd as ad addsd as ad addsd as ad addsd as ad addsd as ad addsd as ad addsd as ad addsd as ad addsd as ad addsd as ad addsd as ad addsd as ad addsd as ad addsd as ad addsd as ad addsd as ad addsd as ad addsd as ad addsd as ad addsd as ad addsd as ad addsd as ad addsd as ad addsd as ad addsd as ad addsd as ad addsd as ad addsd as ad addsd as ad addsd as ad addsd as ad addsd as ad addsd as ad addsd as ad addsd as ad addsd as ad addsd as ad addsd as ad addsd as</div>
+            <div class="dialogButtons">
+                <div class="dialogButton" onclick="ShowDiv('levelOne'); HideDiv('startGame')">Начало</div>
+                <div class="dialogButton" onclick="HideDiv('startGame')">Затваряне</div>
+            </div>
+        </div>
+
+        <div class="dialog" id="levelOne">
+            <div class="dialogTitle">Ниво 1</div>
+            <div class="dialogContent">adasdasdasdsdas asdas ad as asd as ad addsd as ad addsd as ad addsd as ad addsd as ad addsd as ad addsd as ad addsd as ad addsd as ad addsd as ad addsd as ad addsd as ad addsd as ad addsd as ad addsd as ad addsd as ad addsd as ad addsd as ad addsd as ad addsd as ad addsd as ad addsd as ad addsd as ad addsd as ad addsd as ad addsd as ad addsd as ad addsd as ad addsd as ad addsd as ad addsd as ad addsd as ad addsd as ad addsd as ad addsd as ad addsd as ad addsd as ad addsd as ad addsd as ad addsd as ad addsd as ad addsd as ad addsd as ad addsd as ad addsd as</div>
+            <div class="dialogButtons">
+                <div class="dialogButton" onclick="StartGame()">Старт</div>
+                <div class="dialogButton" onclick="HideDiv('levelOne')">Затваряне</div>
+            </div>
+        </div>
+    </div>
+</body>
+</html>

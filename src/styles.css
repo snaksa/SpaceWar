@@ -1,0 +1,103 @@
+.mainDiv{
+    position: relative;
+    width: 800px;
+    height: 500px;
+    border: 1px solid red;
+    font-family: 'Times New Roman';
+}
+
+#splashScreen{
+    background: url(images/splashScreen.jpg) no-repeat #000;
+}
+
+#gameCanvas{
+    width: 800px;
+    height: 500px;
+    position: absolute;
+    top: 0;
+    left: 0;
+}
+
+#logo{
+    margin: 10px auto;
+    text-align: center;
+}
+
+#startButtons{
+    margin: 30px auto;
+    width: 300px;
+}
+
+.startButton{
+    width: 250px;
+    margin: 10px auto;
+    text-align: center;
+    padding: 20px;
+    background-color: yellow;
+    border: 2px solid #000;
+    border-radius: 10px;
+    font-size: 35px;
+    box-sizing: border-box;
+    cursor: pointer;
+}
+
+.startButton:hover{
+    background-color: orange;
+}
+
+.dialog{
+    position: absolute;
+    top: 0;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    margin: 50px auto;
+    width: 60%;
+    height: 80%;
+    border: 2px solid orange;
+    background-color: yellow;
+    border-radius: 20px;
+    display: none;
+}
+
+.dialogTitle{
+    width: 100%;
+    height: 50px;
+    border-bottom: 2px solid orange;
+    text-align: center;
+    box-sizing: border-box;
+    padding: 10px;
+    font-size: 25px;
+}
+
+.dialogContent{
+    height: 270px;
+    padding: 10px;
+    box-sizing: border-box;
+    font-size: 20px;
+    overflow-y: auto;
+    border-bottom: 2px solid orange;
+}
+
+.dialogButtons{
+    height: 100px;
+}
+
+.dialogButton{
+    width: 40%;
+    float: left;
+    padding: 10px;
+    box-sizing: border-box;
+    font-size: 20px;
+    margin-left: 7%;
+    margin-top: 20px;
+    background-color: yellow;
+    border: 1px solid #000;
+    border-radius: 10px;
+    text-align: center;
+    cursor: pointer;
+}
+
+.dialogButton:hover{
+    background-color: orange;
+}
