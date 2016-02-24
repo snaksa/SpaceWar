@@ -8,6 +8,8 @@ frames = 0,
 currentState,
 
 enemyFrequency = 100, //in frames
+enemySpeed,
+enemyDamage,
 enemyBulletFrequency = 80, //in range of 0 to 100 the generated random number should be bigger than this
 enemyBulletSpeed = -10,
 
@@ -22,8 +24,16 @@ keys = [];
 
 var WIDTH, HEIGHT;
 
-function Game() {
+function Game(level) {
 	player = new Player();
+
+	enemyFrequency = levels[level-1].enemyFrequency;
+	enemySpeed = levels[level-1].enemySpeed;
+	enemyBulletFrequency = levels[level-1].enemyBulletFrequency;
+	enemyBulletSpeed = levels[level-1].enemyBulletSpeed;
+	enemyDamage = levels[level-1].enemyDamage;
+	bgposSpeed = levels[level-1].backgroundSpeed;
+
 	keys[38] = false;
 	keys[40] = false;
 }
@@ -71,6 +81,8 @@ function update(){
 		UpdateEnemyBullets();
 
 		PlayerBulletsToEnemyCollision();
+		EnemyBulletsToPlayerCollision();
+
 		if(frames % 3 == 0) UpdateExplosionStage();
 		UpdateExplosionPosition();
 		
@@ -83,12 +95,12 @@ function render(){
 
 	RenderBackground();
 
-	s_player.draw(ctx, player.x, player.y);
-
 	RenderPlayerBullets();
 	RenderEnemies();
 	RenderEnemyBullets();
 	RenderExplosions();
+
+	s_player.draw(ctx, player.x, player.y);
 }
 
 function HandleImageSprites(){

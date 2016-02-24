@@ -62,3 +62,20 @@ function UpdateExplosionPosition(){
 		explosions[i].Move();
 	}
 }
+
+
+
+
+
+function UpdatePlayerDamageStatusbar(fill){
+	if(typeof fill !== 'undefined') $("#playerDamageCover").width(0);
+	else $("#playerDamageCover").width($("#playerDamageCover").width() + 140 / player.damage);
+}
+
+function UpdateLivesStatusBar(){
+	$("#playerLives").text(player.lives);
+}
+
+function UpdatePlayerScoreStatusbar(){
+	$("#playerScore").text(player.score);
+}

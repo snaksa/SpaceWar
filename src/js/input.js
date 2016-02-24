@@ -1,5 +1,5 @@
 function HandlePlayerInput(){
-	if(keys[38] && player.y > 10) player.Up();
+	if(keys[38] && player.y > 80) player.Up();
 	else if(keys[40] && player.y < HEIGHT - s_player.height - 10) player.Down();
 }
 

@@ -8,6 +8,17 @@ function HideDiv(p) {
 
 function StartGame() {
 	HideDiv("splashScreen");
-	var game = new Game();
+	HideDiv('levelOne');
+	ShowDiv('playerStats');
+	var game = new Game(6);
 	game.start();
+}
+
+function StartStory(){
+	ShowDiv('startGame');
+}
+
+function ShowLevelOne(){
+	HideDiv('startGame');
+	ShowDiv('levelOne');
 }

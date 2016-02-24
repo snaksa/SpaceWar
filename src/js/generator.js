@@ -12,7 +12,7 @@ function FireEnemyBullets(frequency, bulletSpeed){
 		var enemiesLenght = enemies.length;
 		for(var i = 0; i < enemiesLenght; i++){
 			var rnd = Math.floor(Math.random() * 100);
-			if(rnd >= frequency && enemies[i].visible){
+			if(rnd >= enemyBulletFrequency && enemies[i].visible){
 				var b = new Bullet(enemies[i].x, enemies[i].y + (s_enemyShips[enemies[i].type].height / 2), enemyBulletSpeed);
 				enemies[i].bullets.push(b);
 			}
@@ -24,7 +24,7 @@ function GenerateEnemy(){
 	if(frames % enemyFrequency == 0){
 		var rndY = Math.floor((Math.random() * 350) + 50);
 		var rndType = Math.floor((Math.random() * 3));
-		var e = new Enemy(rndY, rndType);
+		var e = new Enemy(rndY, rndType, enemySpeed, enemyDamage);
 		enemies.push(e);
 	}
 }
