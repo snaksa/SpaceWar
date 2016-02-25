@@ -10,6 +10,7 @@ function StartGame() {
 	HideDiv("splashScreen");
 	HideDiv('levelOne');
 	ShowDiv('playerStats');
+	ShowDiv('playerRoadContainer');
 	var game = new Game(6);
 	game.start();
 }

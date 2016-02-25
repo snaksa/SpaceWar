@@ -190,3 +190,46 @@
     color: yellow;
     font-size: 35px;
 }
+
+#playerRoadContainer{
+    position: absolute;
+    bottom: 0;
+
+    width: 100%;
+    height: 40px;
+    z-index: 2;
+    display: none;
+    /*border-top: 2px solid red;*/
+}
+
+#playerRoadMap{
+    width: 500px;
+    height: 15px;
+    border: 2px solid #fff;
+    border-radius: 10px;
+    margin: 10px auto;
+    padding: 2px;
+    box-sizing: border-box;
+}
+
+#playerRoadMapFill{
+    background-color: red;
+    width: 100%;
+    height: 100%;
+    border-radius: 10px;
+}
+
+#playerRoadMapCover{
+    float: right;
+    background-color: #000;
+    width: 100%;
+    height: 100%;
+    margin-top: -7px;
+}
+
+#playerMarker{
+    float: left;
+    height: 30px;
+    margin-top: -37px;
+    margin-left: -15px;
+}

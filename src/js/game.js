@@ -16,6 +16,8 @@ enemyBulletSpeed = -10,
 states = {
 	Splash: 0, Game: 1, Score: 2
 },
+levelTime = 180,
+
 player,
 bullets = [],
 enemies = [],
@@ -36,6 +38,21 @@ function Game(level) {
 
 	keys[38] = false;
 	keys[40] = false;
+
+
+	setInterval(function(){ 
+		var rect = $("#playerRoadMapCover")[0].getBoundingClientRect();
+		var width = rect.right - rect.left;
+		var newWidth = width - (492 / levelTime) / 100;
+		$('#playerRoadMapCover').width(newWidth);
+
+		//var margin = $('#playerMarker').css('marginLeft').replace("px", '');
+		//$('#playerMarker').css('marginLeft', (parseFloat(margin) + (492 / levelTime) / 10) + "px");
+
+		//alert((parseInt($("#playerRoadMapCover").css( "margin-right").replace("px", "")) + 10) + "px" );
+		//var margin = parseInt($("#playerRoadMapCover").css( "margin-right").replace("px", "")) - 1.2;
+		//$("#playerRoadMapCover").css( "margin-right", margin + "px");
+	}, 1000 / 100);
 }
 
 function run() {
