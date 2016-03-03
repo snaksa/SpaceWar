@@ -8,6 +8,7 @@
     <script src="js/level.js"></script>
     <script src="js/levels.js"></script>
     <script src="js/explosion.js"></script>
+    <script src="js/powerup.js"></script>
     <script src="js/bullet.js"></script>
     <script src="js/player.js"></script>
     <script src="js/enemy.js"></script>
@@ -20,13 +21,15 @@
     <script src="js/mainJs.js"></script>
 
     <script>
-        window.onload = StartGame;
+        //window.onload = StartGame;
     </script>
 </head>
 
 <body>
+    <img src="images/pageBackground.jpg" id="bg" alt="">
+
     <div id="mainDiv" class="mainDiv" style="margin: 50px auto;">
-    <canvas id="gameCanvas" width="800px" height="500px"></canvas>
+        <canvas id="gameCanvas" width="800px" height="500px"></canvas>
 
         <div class="mainDiv" id="splashScreen">
             <div id="logo"><img src="images/logo.png" /></div>
@@ -37,29 +40,75 @@
         </div>
 
         <div class="dialog" id="startGame">
-            <div class="dialogTitle">Заглавие</div>
-            <div class="dialogContent">adasdasdasdsdas asdas ad as asd as ad addsd as ad addsd as ad addsd as ad addsd as ad addsd as ad addsd as ad addsd as ad addsd as ad addsd as ad addsd as ad addsd as ad addsd as ad addsd as ad addsd as ad addsd as ad addsd as ad addsd as ad addsd as ad addsd as ad addsd as ad addsd as ad addsd as ad addsd as ad addsd as ad addsd as ad addsd as ad addsd as ad addsd as ad addsd as ad addsd as ad addsd as ad addsd as ad addsd as ad addsd as ad addsd as ad addsd as ad addsd as ad addsd as ad addsd as ad addsd as ad addsd as ad addsd as ad addsd as ad addsd as</div>
+            <div class="dialogTitle">Войната започва</div>
+            <div class="dialogContent">
+            <img src="images/andromeda.jpg" class="contentImage" />
+                Във времена на криза всеки търси ресурси, за да оцелее. 
+                Това правят и съществата от най-близката до нас галактика - Андромеда.
+                Зелените твари са дочули, че на Земята има предостатъчно ресурси, с които видът им може да оцелее още милиони години и затова са изпратили най-добрите си войни да завладеят планетата ни и да установят колония. 
+                За съжаление извънземните навлизат бързо и всяка планета до Земята е под контрола им. Вашата задача е да ги спрете, докато не са навредили на спокойния живот на земляните. Екипирайте се и освободете поробените ни съседи.
+            </div>
             <div class="dialogButtons">
-                <div class="dialogButton" onclick="ShowLevelOne()">Начало</div>
+                <div class="dialogButton" onclick="ShowLevelInfo(1)">Начало</div>
                 <div class="dialogButton" onclick="HideDiv('startGame')">Затваряне</div>
             </div>
         </div>
 
-        <div class="dialog" id="levelOne">
-            <div class="dialogTitle">Ниво 1</div>
-            <div class="dialogContent">adasdasdasdsdas asdas ad as asd as ad addsd as ad addsd as ad addsd as ad addsd as ad addsd as ad addsd as ad addsd as ad addsd as ad addsd as ad addsd as ad addsd as ad addsd as ad addsd as ad addsd as ad addsd as ad addsd as ad addsd as ad addsd as ad addsd as ad addsd as ad addsd as ad addsd as ad addsd as ad addsd as ad addsd as ad addsd as ad addsd as ad addsd as ad addsd as ad addsd as ad addsd as ad addsd as ad addsd as ad addsd as ad addsd as ad addsd as ad addsd as ad addsd as ad addsd as ad addsd as ad addsd as ad addsd as ad addsd as ad addsd as</div>
+        <div class="dialog" id="levelInfo">
+            <div class="dialogTitle" id="levelTitle">Ниво 1</div>
+            <div class="dialogContent" id="levelContent"></div>
+            <div style="display:none;" id="levelNumber">1</div>
             <div class="dialogButtons">
-                <div class="dialogButton" onclick="StartGame()">Старт</div>
-                <div class="dialogButton" onclick="HideDiv('levelOne')">Затваряне</div>
+                <div class="dialogButton" style="margin: 20px auto;float:none;" onclick="StartGame()">Старт</div>
             </div>
         </div>
 
+        <div class="dialog" id="lastPlanets">
+            <div class="dialogTitle" id="lastTitle">Ниво 1</div>
+            <div class="dialogContent" id="lastContent"></div>
+            <div style="display:none;" id="lastNumber">1</div>
+            <div class="dialogButtons">
+                <div class="dialogButton" style="margin: 20px auto;float:none;" onclick="ShowLastPlanets()">Напред</div>
+            </div>
+        </div>
+
+        <div class="dialog" id="gameOver">
+            <div class="dialogTitle" id="levelTitle">Загуба</div>
+            <div class="dialogContent" id="levelContent" style="text-align: center;">
+                За съжаление не успяхте да отблъснете враговете и Слънчевата система е обречена! :( <br /><hr />
+                Точки: <span id="playerPoints"></span>
+                <br /><hr />
+                Убити врагове: <span id="killedEnemies"></span>
+            </div>
+            <div style="display:none;" id="levelNumber">1</div>
+            <div class="dialogButtons">
+                <div class="dialogButton" style="margin: 20px auto;float:none;" onclick="Restart()">Започване отначало</div>
+            </div>
+        </div>
+
+        <div class="dialog" id="endOfGame">
+            <div class="dialogTitle" id="levelTitle">Отлична работа!</div>
+            <div class="dialogContent" id="levelContent" style="text-align: center;">
+                Браво! Ти успя да прогониш всички врагове и научи доста нови знания за света, в който живееш :) <br /><hr />
+                Точки: <span id="playerPointsEnd"></span>
+                <br /><hr />
+                Убити врагове: <span id="killedEnemiesEnd"></span>
+            </div>
+            <div style="display:none;" id="levelNumber">1</div>
+            <div class="dialogButtons">
+                <div class="dialogButton" style="margin: 20px auto;float:none;" onclick="Restart()">Започване отначало</div>
+            </div>
+        </div>
+
+
+        <div id="pauseDiv">Пауза</div>
         <div id="playerStats">
             <div id="playerScoreCircle">
                 <img src="images/points.png" />
             </div>
             <div id="playerScore">0</div>
 
+            <div id="pauseGame" onclick="PauseGame()"><img src="images/pause.png" class="pauseImage" id="pauseGameImage" /></div>
             <div id="playerDamageContainer">
                 <div id="playerDamage"></div>
                 <div id=playerDamageCover></div>

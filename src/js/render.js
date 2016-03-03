@@ -36,3 +36,10 @@ function RenderExplosions(){
 		s_explosions[explosions[i].stage].draw(ctx, explosions[i].x, explosions[i].y);
 	}
 }
+
+function RenderPowerUps(){
+	var powerupsLenght = powerups.length;
+	for(var i = 0; i < powerupsLenght; i++){
+		s_powerups[powerups[i].type].draw(ctx, powerups[i].x, powerups[i].y);
+	}
+}

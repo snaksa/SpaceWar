@@ -20,3 +20,23 @@ function onKeyUp(event){
 		keys[40] = false;
 	}
 }
+
+function onKeyUpMouse(event){
+	var x = event.offsetX;
+	if(x < 400){
+		keys[38] = false;
+	}
+	else if(x > 400){
+		keys[40] = false;
+	}
+}
+
+function onKeyDownMouse(event){
+	var x = event.offsetX;
+	if(x < 400){
+		keys[38] = true;
+	}
+	else if(x > 400){
+		keys[40] = true;
+	}
+}

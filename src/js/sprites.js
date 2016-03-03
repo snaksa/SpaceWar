@@ -6,7 +6,8 @@ s_player,
 s_player_bullet,
 s_enemyShips = [],
 s_enemyBullets = [],
-s_explosions = [];
+s_explosions = [],
+s_powerups = [];
 
 /**
  * Simple sprite class
@@ -79,4 +80,15 @@ function initExplosion(img){
 			count++;
 		}
 	}
+}
+
+
+var powerUpTypes = {
+	Points: 0, Bullets: 1, Repair: 2, Clean: 3
+};
+function initPowerUps(img){
+	s_powerups[0] = new Sprite(img, 130, 12, 71, 72); //points
+	s_powerups[1] = new Sprite(img, 202, 84, 71, 72); //bullets
+	s_powerups[2] = new Sprite(img, 130, 84, 71, 72); //ship repair
+	s_powerups[3] = new Sprite(img, 6, 124, 48, 52); //kill all enemies
 }

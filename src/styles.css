@@ -1,13 +1,32 @@
+.dialogContent::-webkit-scrollbar {
+    width: 1px;
+}
+
+#bg {
+    position: fixed;
+    top: 0;
+    left: 0;
+    min-width: 100%;
+    min-height: 100%;
+    z-index: -1;
+}
+
+#mainDiv{
+    border: 2px solid #fff;
+}
+
 .mainDiv{
     position: relative;
     width: 800px;
     height: 500px;
-    border: 1px solid red;
-    font-family: 'Times New Roman';
+    font-family: "Comic Sans MS";
 }
 
 #splashScreen{
     background: url(images/splashScreen.jpg) no-repeat #000;
+    position: absolute;
+    top: 0;
+    left: 0;
 }
 
 #gameCanvas{
@@ -80,14 +99,24 @@
 
 .dialogContent{
     height: 270px;
-    padding: 10px;
+    padding: 20px;
+    padding-top: 10px;
     box-sizing: border-box;
     font-size: 20px;
     overflow-y: auto;
+    text-align: justify;
+}
+
+.contentImage{
+    width: 200px;
+    border: 1px solid #fff;
+    float:right;
+    margin: 10px;
 }
 
 .dialogButtons{
     height: 100px;
+    width: 100%;
 }
 
 .dialogButton{
@@ -141,6 +170,47 @@
     line-height: 50px;
     font-weight: bold;
     text-shadow: 0 0 3px #000;
+}
+
+#pauseDiv{
+    width: 800px;
+    height: 500px;
+    position: absolute;
+    top: 0;
+    left: 0;
+    font-size: 70px;
+    color: yellow;
+    text-align: center;
+    line-height: 500px;
+    display: none;
+}
+
+#pauseGame{
+    position: relative;
+    width: 60px;
+    height: 50px;
+    margin-top: 10px;
+    margin-left: -13px;
+    margin-right: 20px;
+    float: right;
+    border-radius: 10px;
+    border: 2px solid #fff;
+    box-sizing: border-box;
+    cursor: pointer;
+}
+
+#pauseGame:hover{
+    background-color: #fff;
+}
+
+.pauseImage{
+    width: 50px;
+    position: absolute;
+    top: 0;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    margin: auto;
 }
 
 #playerDamageContainer{

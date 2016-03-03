@@ -60,9 +60,93 @@ function EnemyBulletsToPlayerCollision(){
 
 						if(player.lives == 0){
 							//show game over screen
+							currentState = states.GameOver;
 						}
 					}
 			}
 		}
 	}
+}
+
+function PlayerPowerUpsCollision(){
+	var powerupsLength = powerups.length;
+	for(var i = 0; i < powerupsLength; i++){
+		if(PowerupCheck(i)){
+			if(powerups[i].type == powerUpTypes.Points){
+				player.score += 300;
+				UpdatePlayerScoreStatusbar();
+			}
+			else if(powerups[i].type == powerUpTypes.Bullets){
+				player.bulletSpeed *= 2;
+				player.bulletDamage *= 2;
+			}
+			else if(powerups[i].type == powerUpTypes.Repair){
+				player.lives = 3;
+				player.currentDamage = player.damage;
+
+				UpdatePlayerDamageStatusbar(true);
+				UpdateLivesStatusBar();
+			}
+			else if(powerups[i].type == powerUpTypes.Clean){
+				KillAllEnemies();
+			}
+
+			powerups.splice(i, 1);
+			i--;
+			powerupsLength = powerups.length;
+		}
+	}
+}
+
+function KillAllEnemies(){
+	var enemiesLength = enemies.length;
+	for(var i = 0; i < enemiesLength; i++){
+		if(enemies[i].visible){
+			ShipExplosion(enemies[i].x, enemies[i].y, enemies[i].type);
+			player.kills++;
+			player.score += 20 * player.bulletDamage;
+			enemies[i].visible = false;
+		}
+	}
+	UpdatePlayerScoreStatusbar();
+}
+
+function PowerupCheck(i){
+	//top left
+	if(player.x > powerups[i].x && 
+		 player.x < powerups[i].x + s_powerups[powerups[i].type].width){
+		if(player.y > powerups[i].y && 
+			player.y < powerups[i].y + s_powerups[powerups[i].type].height){
+			return true;
+		}
+	}
+
+	//top right
+	if(player.x + s_player.width > powerups[i].x + 30 && 
+		 player.x + s_player.width < powerups[i].x + s_powerups[powerups[i].type].width){
+		if(player.y > powerups[i].y && 
+			player.y < powerups[i].y + s_powerups[powerups[i].type].height){
+			return true;
+		}
+	}
+
+	//bottom right
+	if(player.x + s_player.width > powerups[i].x + 30 && 
+		player.x + s_player.width < powerups[i].x + s_powerups[powerups[i].type].width){
+		if(player.y + s_player.height > powerups[i].y && 
+			player.y + s_player.height < powerups[i].y + s_powerups[powerups[i].type].height){
+			return true;
+		}
+	}
+
+	//bottom left
+	if(player.x > powerups[i].x && 
+		 player.x < powerups[i].x + s_powerups[powerups[i].type].width){
+		if(player.y + s_player.height > powerups[i].y && 
+			player.y + s_player.height < powerups[i].y + s_powerups[powerups[i].type].height){
+			return true;
+		}
+	}
+
+	return false;
 }

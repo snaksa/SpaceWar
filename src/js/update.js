@@ -63,6 +63,19 @@ function UpdateExplosionPosition(){
 	}
 }
 
+function UpdatePowerUps(){
+	var powerupsLenght = powerups.length;
+	for(var i = 0; i < powerupsLenght; i++){
+		powerups[i].Move();
+
+		if(powerups[i].x <= -100){
+			powerups.splice(i, 1);
+			i--;
+			powerupsLenght = powerups.length;
+		}
+	}
+}
+
 
 
 

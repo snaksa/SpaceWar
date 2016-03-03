@@ -8,7 +8,7 @@ function Player(){
 	this.kills = 0;
 	this.score = 0;
 	this.lives = 3;
-	this.damage = 20;
+	this.damage = 10;
 	this.currentDamage = this.damage;
 }
 
